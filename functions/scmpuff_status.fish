@@ -9,7 +9,7 @@ function scmpuff_status
         return $es
     end
 
-    set -l files (echo "$cmd_output[1]" | tr "\t" "\n")
+    set -l files (string split \t $cmd_output[1])
     for e in (seq (count $files))
         set -gx "$scmpuff_env_char""$e" "$files[$e]"
     end
