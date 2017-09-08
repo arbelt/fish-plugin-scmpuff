@@ -23,13 +23,13 @@ function git
 
     switch $argv[1]
     case commit blame log rebase merge
-        eval (scmpuff expand -- "$SCMPUFF_GIT_CMD" $argv)
+        eval command (scmpuff expand -- "$SCMPUFF_GIT_CMD" $argv)
     case checkout diff rm reset
-        eval (scmpuff expand --relative -- "$SCMPUFF_GIT_CMD" $argv)
+        eval command (scmpuff expand --relative -- "$SCMPUFF_GIT_CMD" $argv)
     case add
-        eval (scmpuff expand -- "$SCMPUFF_GIT_CMD" $argv)
+        eval command (scmpuff expand -- "$SCMPUFF_GIT_CMD" $argv)
         scmpuff_status
     case '*'
-        eval "$SCMPUFF_GIT_CMD" $argv
+        eval command "$SCMPUFF_GIT_CMD" $argv
     end
 end
