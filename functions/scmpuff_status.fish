@@ -2,11 +2,12 @@
 function scmpuff_status
     scmpuff_clear_vars
     set -lx scmpuff_env_char "e"
-    set -l cmd_output (/usr/bin/env scmpuff status --filelist $argv)
+    set -l cmd_output (/usr/bin/env scmpuff status --filelist $argv ^/dev/null)
     set -l es "$status"
 
     if test $es -ne 0
-        return $es
+        git status
+        return $status
     end
 
     set -l files (string split \t $cmd_output[1])
