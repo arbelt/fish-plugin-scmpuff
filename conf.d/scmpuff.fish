@@ -29,6 +29,8 @@ function git
     case add
         eval command (scmpuff expand -- "$SCMPUFF_GIT_CMD" $argv)
         scmpuff_status
+    case config
+        eval command "$SCMPUFF_GIT_CMD" (string escape -- $argv)
     case '*'
         eval command "$SCMPUFF_GIT_CMD" $argv
     end
